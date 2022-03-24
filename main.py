@@ -41,7 +41,7 @@ def handle_dialog(req, res, enimals, end_session):
                 "Отстань!",
             ]
         }
-        res['response']['text'] = 'Привет! Купи слона!'
+        res['response']['text'] = f'Привет! Купи {enimals}!'
         res['response']['buttons'] = get_suggests(user_id)
         return
 
@@ -51,12 +51,12 @@ def handle_dialog(req, res, enimals, end_session):
         'покупаю',
         'хорошо', 'я куплю', 'я покупаю'
     ]:
-        res['response']['text'] = 'Слона можно найти на Яндекс.Маркете!'
-        res['response']['end_session'] = True
+        res['response']['text'] = f'{enimals} можно найти на Яндекс.Маркете!'
+        res['response']['end_session'] = end_session
         return
 
     res['response']['text'] = \
-        f"Все говорят '{req['request']['original_utterance']}', а ты купи слона!"
+        f"Все говорят '{req['request']['original_utterance']}', а ты купи {enimals}!"
     res['response']['buttons'] = get_suggests(user_id)
 
 
