@@ -21,14 +21,15 @@ def main():
             'end_session': False
         }
     }
-    handle_dialog(request.json, response)
+    handle_dialog(request.json, response, 'слона', False)
+    handle_dialog(request.json, response, 'кролика', True)
 
     logging.info(f'Response:  {response!r}')
 
     return json.dumps(response)
 
 
-def handle_dialog(req, res):
+def handle_dialog(req, res, enimals, end_session):
     user_id = req['session']['user_id']
 
     if req['session']['new']:
